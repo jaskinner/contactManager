@@ -12,6 +12,97 @@
 </div>
 <br>
 
+<div class="row">
+  <div class="large-6 columns">
+    <button (click)="changeState('add')" class="button">Add Business</button>
+  </div>
+  <div class="large-6 columns">
+    <label for="filterlist">Filter Category</label>
+    <select (change)="filterCategory(filteredCategory.value)" #filteredCategory name="" id="filterlist">
+      <option value="0">Select</option>
+      <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+    </select>
+  </div>
+</div>
+
+<div *ngIf="appState == 'add'">
+  <div class="row">
+    <div class="large-12 columns">
+      <h3>Add Business</h3>
+      <form (submit)="addBusiness(
+      company.value,
+      category.value,
+      years_in_business.value,
+      description.value,
+      phone.value,
+      email.value,
+      street_address.value,
+      city.value,
+      state.value,
+      zipcode.value)" action="">
+        <div class="row">
+          <div class="medium-6 columns">
+            <label for="">Company</label>
+            <input type="text" #company placeholder="Company Name">
+          </div>
+          <div class="medium-6 columns">
+            <label for="">Category</label>
+            <select #category name="" id="">
+              <option value="0">Select</option>
+              <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <label for="">Years in Business</label>
+            <input type="text" #years_in_business placeholder="Years in business">
+          </div>
+          <div class="medium-6 columns">
+            <label for="">Description</label>
+            <textarea #description></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <label for="">Phone</label>
+            <input type="text" #phone placeholder="Phone">
+          </div>
+          <div class="medium-6 columns">
+            <label for="">Email</label>
+            <input type="text" #email placeholder="Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <label for="">Street</label>
+            <input type="text" #street_address placeholder="Street">
+          </div>
+          <div class="medium-6 columns">
+            <label for="">City</label>
+            <input type="text" #city placeholder="City">
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <label for="">State</label>
+            <input type="text" #state placeholder="State">
+          </div>
+          <div class="medium-6 columns">
+            <label for="">Zip</label>
+            <input type="text" #zipcode placeholder="Zip">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <input type="submit" class="button" value="Submit">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div *ngIf="appState == 'extend'">
   <div class="row">
     <div class="large-12 columns">
